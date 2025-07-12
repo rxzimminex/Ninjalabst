@@ -4,69 +4,100 @@
   <meta charset="UTF-8" />
   <title>Ultimate Ninja - Contas Roblox</title>
   <style>
+    /* Reset e base */
     body {
       margin: 0;
       background-color: #0b0b0b;
       color: #f5f5f5;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      overflow-x: hidden;
     }
+
     header {
       background: #111;
       padding: 30px 20px;
       text-align: center;
       border-bottom: 2px solid #e60000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     header h1 {
       margin: 0;
       font-size: 2.8em;
       color: #e60000;
+      letter-spacing: 1px;
     }
+
     nav {
       margin-top: 15px;
     }
+
     nav a {
       color: #f5f5f5;
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
+      transition: color 0.3s;
     }
+
+    nav a:hover {
+      color: #e60000;
+    }
+
     .section {
       display: none;
       padding: 40px 20px;
       max-width: 1200px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
+
     .section.active {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
+
     .hero {
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
+      animation: fadeIn 1s ease forwards;
     }
+
     .hero h2 {
       color: #e60000;
-      font-size: 2em;
+      font-size: 2.2em;
+      margin-bottom: 15px;
     }
+
     .hero p {
       max-width: 700px;
-      margin: 20px auto 0;
+      margin: 0 auto;
       font-size: 1.2em;
       line-height: 1.6;
     }
+
     .category {
       margin-bottom: 50px;
     }
+
     .category h2 {
       border-left: 5px solid #e60000;
       padding-left: 15px;
       font-size: 1.8em;
       margin-bottom: 20px;
     }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
     }
+
     .card {
       background: #1a1a1a;
       border-radius: 10px;
@@ -75,26 +106,42 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
     }
+
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(230, 0, 0, 0.4);
     }
+
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      transition: transform 0.4s ease;
     }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
     .card-content {
       padding: 20px;
     }
+
     .card-content h3 {
       margin: 0 0 10px;
       color: #e60000;
+      font-size: 1.2em;
     }
+
     .card-content p {
       margin: 0 0 20px;
+      line-height: 1.4;
+      font-size: 0.95em;
     }
+
     .card-content a {
       display: inline-block;
       background: #e60000;
@@ -103,22 +150,41 @@
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
+
     .card-content a:hover {
       background: #ff1a1a;
     }
+
     .contact-info {
       text-align: center;
       font-size: 1.2em;
       line-height: 2em;
+      animation: fadeIn 1s ease forwards;
     }
+
     footer {
       background: #111;
       text-align: center;
       padding: 30px 20px;
       border-top: 2px solid #e60000;
       margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsivo extra */
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      nav a {
+        margin: 0 10px;
+      }
     }
   </style>
 </head>
@@ -133,285 +199,55 @@
     </nav>
   </header>
 
+  <!-- INÍCIO -->
   <section id="inicio" class="section active">
     <div class="hero">
       <h2>Bem-vindo ao Ultimate Ninja</h2>
-      <p>Aqui você encontra as melhores contas de Roblox, totalmente otimizadas para os games mais jogados: Grow a Garden, Blox Fruits, Jujutsu Infinite, Haze Piece e King Legacy. Conte com qualidade, segurança e atendimento personalizado. Prepare-se para dominar o jogo!</p>
+      <p>Seu portal para as melhores contas Roblox premium. Evolua em Grow a Garden, Blox Fruits, Jujutsu Infinite, Haze Piece e King Legacy com qualidade, segurança e atendimento rápido. Torne-se o próximo ninja supremo!</p>
     </div>
   </section>
 
+  <!-- CONTAS -->
   <section id="contas" class="section">
-    <!-- Grow a Garden -->
+    <!-- Categories -->
     <div class="category">
       <h2>Grow a Garden</h2>
       <div class="container">
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Plantas raras, farm avançada.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+2" alt="">
-          <div class="card-content">
-            <h3>Conta 2</h3>
-            <p>Progresso nível máximo.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+3" alt="">
-          <div class="card-content">
-            <h3>Conta 3</h3>
-            <p>Itens premium incluídos.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+4" alt="">
-          <div class="card-content">
-            <h3>Conta 4</h3>
-            <p>Fazenda automatizada.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+5" alt="">
-          <div class="card-content">
-            <h3>Conta 5</h3>
-            <p>Conta com boosts ativos.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+6" alt="">
-          <div class="card-content">
-            <h3>Conta 6</h3>
-            <p>Conta especial VIP.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
+        <!-- 6 cards -->
+        ${generateCards('Grow+a+Garden')}
       </div>
     </div>
 
-    <!-- Blox Fruits -->
     <div class="category">
       <h2>Blox Fruits</h2>
       <div class="container">
-        <!-- Repita para cada conta -->
-        <!-- Só troque o número no texto e na imagem -->
-        <!-- Exemplo de uma conta -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Frutas lendárias raras.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <!-- Mais 5 -->
-        <!-- Copie e altere -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+2" alt="">
-          <div class="card-content">
-            <h3>Conta 2</h3>
-            <p>Personagem nível máximo.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+3" alt="">
-          <div class="card-content">
-            <h3>Conta 3</h3>
-            <p>Itens exclusivos desbloqueados.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+4" alt="">
-          <div class="card-content">
-            <h3>Conta 4</h3>
-            <p>Arsenal completo.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+5" alt="">
-          <div class="card-content">
-            <h3>Conta 5</h3>
-            <p>Todos os mapas desbloqueados.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+6" alt="">
-          <div class="card-content">
-            <h3>Conta 6</h3>
-            <p>Conta VIP premium.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
+        ${generateCards('Blox+Fruits')}
       </div>
     </div>
 
-    <!-- Jujutsu Infinite -->
     <div class="category">
       <h2>Jujutsu Infinite</h2>
       <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Técnicas amaldiçoadas raras.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <!-- (Continue com as outras 5 contas, mesmo padrão) -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+2" alt="">
-          <div class="card-content">
-            <h3>Conta 2</h3>
-            <p>Personagem lendário.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+3" alt="">
-          <div class="card-content">
-            <h3>Conta 3</h3>
-            <p>Status evoluído.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+4" alt="">
-          <div class="card-content">
-            <h3>Conta 4</h3>
-            <p>Itens raros incluídos.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+5" alt="">
-          <div class="card-content">
-            <h3>Conta 5</h3>
-            <p>Técnicas desbloqueadas.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+6" alt="">
-          <div class="card-content">
-            <h3>Conta 6</h3>
-            <p>Conta especial VIP.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
+        ${generateCards('Jujutsu+Infinite')}
       </div>
     </div>
 
-    <!-- Haze Piece -->
     <div class="category">
       <h2>Haze Piece</h2>
       <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <!-- Haze Piece -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>
+        ${generateCards('Haze+Piece')}
       </div>
     </div>
-  <!-- Haze Piece -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>
-      </div>
-</div>
-<!-- Haze Piece -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>  
-          </div>
-        </div>
-        <!-- Haze Piece -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <!-- Haze Piece -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Armas épicas raras.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-            <!-- King Legacy --
+
     <div class="category">
       <h2>King Legacy</h2>
       <div class="container">
-        <!-- 6 contas -->
-        <div class="card">
-          <img src="https://via.placeholder.com/500x200?text=King+Legacy+1" alt="">
-          <div class="card-content">
-            <h3>Conta 1</h3>
-            <p>Poderes lendários desbloqueados.</p>
-            <a href="#">Comprar</a>
-          </div>
-        </div>
-        <!-- (Continue com as outras 5 contas) -->
+        ${generateCards('King+Legacy')}
       </div>
     </div>
-
   </section>
 
+  <!-- CONTATO -->
   <section id="contato" class="section">
     <div class="contact-info">
       <h2>Fale Conosco</h2>
@@ -425,12 +261,37 @@
   </footer>
 
   <script>
+    // Alternar seções com animação
     function showSection(id) {
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
     }
+
+    // Gerar cards via template literal
+    function generateCards(game) {
+      let cards = '';
+      for (let i = 1; i <= 6; i++) {
+        cards += `
+          <div class="card">
+            <img src="https://via.placeholder.com/500x200?text=${game}+${i}" alt="">
+            <div class="card-content">
+              <h3>Conta ${i}</h3>
+              <p>Conta especial ${game.replace(/\+/g, ' ')}.</p>
+              <a href="#">Comprar</a>
+            </div>
+          </div>
+        `;
+      }
+      return cards;
+    }
+
+    // Injetar cards
+    document.querySelectorAll('.category .container').forEach((container, index) => {
+      const games = ['Grow+a+Garden', 'Blox+Fruits', 'Jujutsu+Infinite', 'Haze+Piece', 'King+Legacy'];
+      container.innerHTML = generateCards(games[index]);
+    });
   </script>
 
 </body>
