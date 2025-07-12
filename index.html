@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Ultimate Ninja - Contas Roblox</title>
   <style>
-    /* Reset e base */
     body {
       margin: 0;
       background-color: #0b0b0b;
@@ -106,8 +105,15 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.4s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card:hover {
@@ -177,7 +183,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Responsivo extra */
     @media(max-width: 600px) {
       header h1 {
         font-size: 2em;
@@ -213,7 +218,6 @@
     <div class="category">
       <h2>Grow a Garden</h2>
       <div class="container">
-        <!-- 6 cards -->
         ${generateCards('Grow+a+Garden')}
       </div>
     </div>
@@ -261,15 +265,18 @@
   </footer>
 
   <script>
-    // Alternar seções com animação
     function showSection(id) {
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
+      const target = document.getElementById(id);
+      target.classList.add('active');
+
+      if (id === 'contas') {
+        animateCards();
+      }
     }
 
-    // Gerar cards via template literal
     function generateCards(game) {
       let cards = '';
       for (let i = 1; i <= 6; i++) {
@@ -287,11 +294,19 @@
       return cards;
     }
 
-    // Injetar cards
     document.querySelectorAll('.category .container').forEach((container, index) => {
       const games = ['Grow+a+Garden', 'Blox+Fruits', 'Jujutsu+Infinite', 'Haze+Piece', 'King+Legacy'];
       container.innerHTML = generateCards(games[index]);
     });
+
+    function animateCards() {
+      const cards = document.querySelectorAll('#contas .card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.classList.add('visible');
+        }, i * 150);
+      });
+    }
   </script>
 
 </body>
