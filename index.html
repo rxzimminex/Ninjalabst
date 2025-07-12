@@ -30,23 +30,42 @@
       margin: 0 20px;
       font-weight: bold;
     }
+    .section {
+      display: none;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section.active {
+      display: block;
+    }
     .hero {
       text-align: center;
       padding: 50px 20px;
     }
+    .hero h2 {
+      color: #e60000;
+      font-size: 2em;
+    }
     .hero p {
-      max-width: 600px;
+      max-width: 700px;
       margin: 20px auto 0;
       font-size: 1.2em;
       line-height: 1.6;
     }
+    .category {
+      margin-bottom: 50px;
+    }
+    .category h2 {
+      border-left: 5px solid #e60000;
+      padding-left: 15px;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
     }
     .card {
       background: #1a1a1a;
@@ -63,13 +82,13 @@
     }
     .card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
     }
     .card-content {
       padding: 20px;
     }
-    .card-content h2 {
+    .card-content h3 {
       margin: 0 0 10px;
       color: #e60000;
     }
@@ -89,6 +108,11 @@
     .card-content a:hover {
       background: #ff1a1a;
     }
+    .contact-info {
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 2em;
+    }
     footer {
       background: #111;
       text-align: center;
@@ -103,67 +127,249 @@
   <header>
     <h1>Ultimate Ninja</h1>
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Contas</a>
-      <a href="#">Contato</a>
+      <a href="#" onclick="showSection('inicio')">Início</a>
+      <a href="#" onclick="showSection('contas')">Contas</a>
+      <a href="#" onclick="showSection('contato')">Contato</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h2>As Melhores Contas de Roblox</h2>
-    <p>Compre contas premium para Grow a Garden, Blox Fruits, Jujutsu Infinite, Haze Piece e King Legacy. Avance no jogo com vantagens exclusivas!</p>
+  <section id="inicio" class="section active">
+    <div class="hero">
+      <h2>Bem-vindo ao Ultimate Ninja</h2>
+      <p>Aqui você encontra as melhores contas de Roblox, totalmente otimizadas para os games mais jogados: Grow a Garden, Blox Fruits, Jujutsu Infinite, Haze Piece e King Legacy. Conte com qualidade, segurança e atendimento personalizado. Prepare-se para dominar o jogo!</p>
+    </div>
   </section>
 
-  <section class="container">
-    <div class="card">
-      <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden" alt="Grow a Garden">
-      <div class="card-content">
-        <h2>Grow a Garden</h2>
-        <p>Conta com farm avançada, plantas raras e upgrades prontos para acelerar seu progresso.</p>
-        <a href="LINK_DO_SEU_WHATSAPP">Comprar Agora</a>
+  <section id="contas" class="section">
+    <!-- Grow a Garden -->
+    <div class="category">
+      <h2>Grow a Garden</h2>
+      <div class="container">
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+1" alt="">
+          <div class="card-content">
+            <h3>Conta 1</h3>
+            <p>Plantas raras, farm avançada.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+2" alt="">
+          <div class="card-content">
+            <h3>Conta 2</h3>
+            <p>Progresso nível máximo.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+3" alt="">
+          <div class="card-content">
+            <h3>Conta 3</h3>
+            <p>Itens premium incluídos.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+4" alt="">
+          <div class="card-content">
+            <h3>Conta 4</h3>
+            <p>Fazenda automatizada.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+5" alt="">
+          <div class="card-content">
+            <h3>Conta 5</h3>
+            <p>Conta com boosts ativos.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Grow+a+Garden+6" alt="">
+          <div class="card-content">
+            <h3>Conta 6</h3>
+            <p>Conta especial VIP.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1371155851414474814/1393602125401161853/Screenshot_20241014-1551342.jpg?ex=6873c49e&is=6872731e&hm=0df8b03c866fd9c441043ec44e9e5b5e013452eb252b5007f775af4defae3404&" alt="Blox Fruits">
-      <div class="card-content">
-        <h2>Blox Fruits</h2>
-        <p>Conta lendária com frutas especiais, personagens evoluídos e arsenal completo.</p>
-        <a href="LINK_DO_SEU_WHATSAPP">Comprar Agora</a>
+    <!-- Blox Fruits -->
+    <div class="category">
+      <h2>Blox Fruits</h2>
+      <div class="container">
+        <!-- Repita para cada conta -->
+        <!-- Só troque o número no texto e na imagem -->
+        <!-- Exemplo de uma conta -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+1" alt="">
+          <div class="card-content">
+            <h3>Conta 1</h3>
+            <p>Frutas lendárias raras.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <!-- Mais 5 -->
+        <!-- Copie e altere -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+2" alt="">
+          <div class="card-content">
+            <h3>Conta 2</h3>
+            <p>Personagem nível máximo.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+3" alt="">
+          <div class="card-content">
+            <h3>Conta 3</h3>
+            <p>Itens exclusivos desbloqueados.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+4" alt="">
+          <div class="card-content">
+            <h3>Conta 4</h3>
+            <p>Arsenal completo.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+5" alt="">
+          <div class="card-content">
+            <h3>Conta 5</h3>
+            <p>Todos os mapas desbloqueados.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Blox+Fruits+6" alt="">
+          <div class="card-content">
+            <h3>Conta 6</h3>
+            <p>Conta VIP premium.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite" alt="Jujutsu Infinite">
-      <div class="card-content">
-        <h2>Jujutsu Infinite</h2>
-        <p>Conta exclusiva com técnicas raras, personagens poderosos e status elevado.</p>
-        <a href="LINK_DO_SEU_WHATSAPP">Comprar Agora</a>
+    <!-- Jujutsu Infinite -->
+    <div class="category">
+      <h2>Jujutsu Infinite</h2>
+      <div class="container">
+        <!-- 6 contas -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+1" alt="">
+          <div class="card-content">
+            <h3>Conta 1</h3>
+            <p>Técnicas amaldiçoadas raras.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <!-- (Continue com as outras 5 contas, mesmo padrão) -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+2" alt="">
+          <div class="card-content">
+            <h3>Conta 2</h3>
+            <p>Personagem lendário.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+3" alt="">
+          <div class="card-content">
+            <h3>Conta 3</h3>
+            <p>Status evoluído.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+4" alt="">
+          <div class="card-content">
+            <h3>Conta 4</h3>
+            <p>Itens raros incluídos.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+5" alt="">
+          <div class="card-content">
+            <h3>Conta 5</h3>
+            <p>Técnicas desbloqueadas.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Jujutsu+Infinite+6" alt="">
+          <div class="card-content">
+            <h3>Conta 6</h3>
+            <p>Conta especial VIP.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/500x200?text=Haze+Piece" alt="Haze Piece">
-      <div class="card-content">
-        <h2>Haze Piece</h2>
-        <p>Conta top-tier com equipamentos únicos e grande progresso nas missões principais.</p>
-        <a href="LINK_DO_SEU_WHATSAPP">Comprar Agora</a>
+    <!-- Haze Piece -->
+    <div class="category">
+      <h2>Haze Piece</h2>
+      <div class="container">
+        <!-- 6 contas -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=Haze+Piece+1" alt="">
+          <div class="card-content">
+            <h3>Conta 1</h3>
+            <p>Armas épicas raras.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <!-- (Continue com as outras 5 contas) -->
+        <!-- etc -->
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/500x200?text=King+Legacy" alt="King Legacy">
-      <div class="card-content">
-        <h2>King Legacy</h2>
-        <p>Conta premium com poderes raros, personagens upados e conquistas épicas.</p>
-        <a href="LINK_DO_SEU_WHATSAPP">Comprar Agora</a>
+    <!-- King Legacy -->
+    <div class="category">
+      <h2>King Legacy</h2>
+      <div class="container">
+        <!-- 6 contas -->
+        <div class="card">
+          <img src="https://via.placeholder.com/500x200?text=King+Legacy+1" alt="">
+          <div class="card-content">
+            <h3>Conta 1</h3>
+            <p>Poderes lendários desbloqueados.</p>
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+        <!-- (Continue com as outras 5 contas) -->
       </div>
+    </div>
+
+  </section>
+
+  <section id="contato" class="section">
+    <div class="contact-info">
+      <h2>Fale Conosco</h2>
+      <p>📞 Telefone/WhatsApp: 12 98250-9357</p>
+      <p>📧 Email: ninjalabs.nl@gmail.com</p>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Ultimate Ninja - Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
