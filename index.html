@@ -1,16 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Ultimate Ninja - Painel</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #e60000;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .section {
+      display: none;
+      padding: 30px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .category {
+      margin-bottom: 50px;
+    }
+
+    .category h2 {
+      font-size: 1.8em;
+      color: #ff4444;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 10px;
+      color: #e60000;
+    }
+
+    .card-content p {
+      margin: 0 0 15px;
+      font-size: 0.95em;
+      color: #ccc;
+    }
+
+    .card-content a {
+      background: #e60000;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #999;
+      margin-top: 30px;
+    }
+  </style>
   <script defer>
     if (!localStorage.getItem("usuarioLogado")) {
       window.location.href = "login.html";
     }
 
     const user = JSON.parse(localStorage.getItem("usuarioLogado"));
-    window.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("emailUser").innerText = user?.email || "Desconhecido";
       document.getElementById("logEmail").innerText = user?.email || "Desconhecido";
       document.getElementById("logDate").innerText = new Date().toLocaleString();
@@ -24,22 +129,20 @@
     function showSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-    }
-  </script>
-  <style>
-    .card {
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 0.6s ease forwards;
+
+      if (id === 'contas') animateCards();
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    function animateCards() {
+      const cards = document.querySelectorAll('#contas .card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, i * 150);
+      });
     }
-  </style>
+  </script>
 </head>
 <body>
   <header>
@@ -61,68 +164,12 @@
   </section>
 
   <section id="contas" class="section">
-    <!-- GROW A GARDEN -->
     <div class="category">
       <h2>Grow a Garden</h2>
       <div class="container">
-        <div class="card" style="animation-delay: 0s;"><img src="https://via.placeholder.com/500x200?text=Grow+1" alt=""><div class="card-content"><h3>Conta Grow 1</h3><p>Descrição Grow 1</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.2s;"><img src="https://via.placeholder.com/500x200?text=Grow+2" alt=""><div class="card-content"><h3>Conta Grow 2</h3><p>Descrição Grow 2</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.4s;"><img src="https://via.placeholder.com/500x200?text=Grow+3" alt=""><div class="card-content"><h3>Conta Grow 3</h3><p>Descrição Grow 3</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.6s;"><img src="https://via.placeholder.com/500x200?text=Grow+4" alt=""><div class="card-content"><h3>Conta Grow 4</h3><p>Descrição Grow 4</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.8s;"><img src="https://via.placeholder.com/500x200?text=Grow+5" alt=""><div class="card-content"><h3>Conta Grow 5</h3><p>Descrição Grow 5</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 1s;"><img src="https://via.placeholder.com/500x200?text=Grow+6" alt=""><div class="card-content"><h3>Conta Grow 6</h3><p>Descrição Grow 6</p><a href="#">Comprar</a></div></div>
-      </div>
-    </div>
-
-    <!-- BLOX FRUITS -->
-    <div class="category">
-      <h2>Blox Fruits</h2>
-      <div class="container">
-        <div class="card" style="animation-delay: 0s;"><img src="https://via.placeholder.com/500x200?text=Blox+1" alt=""><div class="card-content"><h3>Conta Blox 1</h3><p>Descrição Blox 1</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.2s;"><img src="https://via.placeholder.com/500x200?text=Blox+2" alt=""><div class="card-content"><h3>Conta Blox 2</h3><p>Descrição Blox 2</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.4s;"><img src="https://via.placeholder.com/500x200?text=Blox+3" alt=""><div class="card-content"><h3>Conta Blox 3</h3><p>Descrição Blox 3</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.6s;"><img src="https://via.placeholder.com/500x200?text=Blox+4" alt=""><div class="card-content"><h3>Conta Blox 4</h3><p>Descrição Blox 4</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.8s;"><img src="https://via.placeholder.com/500x200?text=Blox+5" alt=""><div class="card-content"><h3>Conta Blox 5</h3><p>Descrição Blox 5</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 1s;"><img src="https://via.placeholder.com/500x200?text=Blox+6" alt=""><div class="card-content"><h3>Conta Blox 6</h3><p>Descrição Blox 6</p><a href="#">Comprar</a></div></div>
-      </div>
-    </div>
-
-    <!-- JUJUTSU INFINITE -->
-    <div class="category">
-      <h2>Jujutsu Infinite</h2>
-      <div class="container">
-        <div class="card" style="animation-delay: 0s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+1" alt=""><div class="card-content"><h3>Conta Jujutsu 1</h3><p>Descrição Jujutsu 1</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.2s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+2" alt=""><div class="card-content"><h3>Conta Jujutsu 2</h3><p>Descrição Jujutsu 2</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.4s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+3" alt=""><div class="card-content"><h3>Conta Jujutsu 3</h3><p>Descrição Jujutsu 3</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.6s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+4" alt=""><div class="card-content"><h3>Conta Jujutsu 4</h3><p>Descrição Jujutsu 4</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.8s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+5" alt=""><div class="card-content"><h3>Conta Jujutsu 5</h3><p>Descrição Jujutsu 5</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 1s;"><img src="https://via.placeholder.com/500x200?text=Jujutsu+6" alt=""><div class="card-content"><h3>Conta Jujutsu 6</h3><p>Descrição Jujutsu 6</p><a href="#">Comprar</a></div></div>
-      </div>
-    </div>
-
-    <!-- HAZE PIECE -->
-    <div class="category">
-      <h2>Haze Piece</h2>
-      <div class="container">
-        <div class="card" style="animation-delay: 0s;"><img src="https://via.placeholder.com/500x200?text=Haze+1" alt=""><div class="card-content"><h3>Conta Haze 1</h3><p>Descrição Haze 1</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.2s;"><img src="https://via.placeholder.com/500x200?text=Haze+2" alt=""><div class="card-content"><h3>Conta Haze 2</h3><p>Descrição Haze 2</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.4s;"><img src="https://via.placeholder.com/500x200?text=Haze+3" alt=""><div class="card-content"><h3>Conta Haze 3</h3><p>Descrição Haze 3</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.6s;"><img src="https://via.placeholder.com/500x200?text=Haze+4" alt=""><div class="card-content"><h3>Conta Haze 4</h3><p>Descrição Haze 4</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.8s;"><img src="https://via.placeholder.com/500x200?text=Haze+5" alt=""><div class="card-content"><h3>Conta Haze 5</h3><p>Descrição Haze 5</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 1s;"><img src="https://via.placeholder.com/500x200?text=Haze+6" alt=""><div class="card-content"><h3>Conta Haze 6</h3><p>Descrição Haze 6</p><a href="#">Comprar</a></div></div>
-      </div>
-    </div>
-
-    <!-- KING LEGACY -->
-    <div class="category">
-      <h2>King Legacy</h2>
-      <div class="container">
-        <div class="card" style="animation-delay: 0s;"><img src="https://via.placeholder.com/500x200?text=King+1" alt=""><div class="card-content"><h3>Conta King 1</h3><p>Descrição King 1</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.2s;"><img src="https://via.placeholder.com/500x200?text=King+2" alt=""><div class="card-content"><h3>Conta King 2</h3><p>Descrição King 2</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.4s;"><img src="https://via.placeholder.com/500x200?text=King+3" alt=""><div class="card-content"><h3>Conta King 3</h3><p>Descrição King 3</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.6s;"><img src="https://via.placeholder.com/500x200?text=King+4" alt=""><div class="card-content"><h3>Conta King 4</h3><p>Descrição King 4</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 0.8s;"><img src="https://via.placeholder.com/500x200?text=King+5" alt=""><div class="card-content"><h3>Conta King 5</h3><p>Descrição King 5</p><a href="#">Comprar</a></div></div>
-        <div class="card" style="animation-delay: 1s;"><img src="https://via.placeholder.com/500x200?text=King+6" alt=""><div class="card-content"><h3>Conta King 6</h3><p>Descrição King 6</p><a href="#">Comprar</a></div></div>
+        <div class="card"><img src="https://via.placeholder.com/500x200?text=Grow+1" alt=""><div class="card-content"><h3>Conta Grow 1</h3><p>Descrição Grow 1</p><a href="#">Comprar</a></div></div>
+        <div class="card"><img src="https://via.placeholder.com/500x200?text=Grow+2" alt=""><div class="card-content"><h3>Conta Grow 2</h3><p>Descrição Grow 2</p><a href="#">Comprar</a></div></div>
+        <div class="card"><img src="https://via.placeholder.com/500x200?text=Grow+3" alt=""><div class="card-content"><h3>Conta Grow 3</h3><p>Descrição Grow 3</p><a href="#">Comprar</a></div></div>
       </div>
     </div>
   </section>
@@ -147,4 +194,4 @@
     <p>&copy; 2025 Ultimate Ninja - Todos os direitos reservados.</p>
   </footer>
 </body>
-                                                                                                                                                                                                   </html>
+</html>
