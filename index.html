@@ -1,6 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <title>Ultimate Ninja - Contas Roblox</title>  <!-- Firebase -->  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>  <script src="firebase-config.js"></script>  <!-- Estilo e funcionalidade da página -->  <style>
+    /* ... (todo o CSS original do seu primeiro index.html) ... */
+  </style>  <script defer>
+    // Verifica autenticação com Firebase
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        document.addEventListener("DOMContentLoaded", () => {
+          document.getElementById("emailUser").innerText = user.email;
+          document.getElementById("logEmail").innerText = user.email;
+          document.getElementById("logDate").innerText = new Date().toLocaleString();
+        });
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      if (id === 'contas') animateCards();
+    }
+
+    function animateCards() {
+      const cards = document.querySelectorAll('#contas .card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.classList.add('visible');
+        }, i * 100);
+      });
+    }
+
+    function createParticles() {
+      const container = document.querySelector('.floating-particles');
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    createParticles();
+
+    window.addEventListener('load', () => {
+      if (document.getElementById('contas').classList.contains('active')) {
+        animateCards();
+      }
+    });
+  </script></head>
+<body>
+  
   <meta charset="UTF-8" />
   <title>Ultimate Ninja - Contas Roblox</title>
   <style>
