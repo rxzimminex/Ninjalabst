@@ -1,19 +1,53 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <title>Login - NinjaLabs</title>
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="firebase-config.js"></script>
   <script src="script.js" defer></script>
   <style>
-    body { background:#111; color:white; font-family:sans-serif; padding:40px; }
-    .container { max-width:400px; margin:0 auto; background:#222; padding:30px; border-radius:10px; }
-    input, button { width:100%; padding:10px; margin:10px 0; border:none; border-radius:5px; }
-    input { background:#333; color:white; }
-    button { background:#e60000; color:white; font-weight:bold; cursor:pointer; }
-    .toggle { text-align:center; margin-top:10px; color:#aaa; cursor:pointer; }
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      background: #333;
+      color: white;
+    }
+    button {
+      background: #e60000;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .toggle {
+      text-align: center;
+      margin-top: 10px;
+      color: #aaa;
+      cursor: pointer;
+    }
+    #msg {
+      color: red;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -23,10 +57,8 @@
     <input type="password" id="senha" placeholder="Senha" required />
     <button onclick="login()">Entrar</button>
     <p class="toggle" onclick="switchForm()">Não tem conta? Cadastre-se</p>
-    <p id="msg" style="color:red;text-align:center;"></p>
-  </div>
-
-  <script>
+    <p id="msg"></p>
+  </div>  <script>
     let isLogin = true;
     function switchForm() {
       const btn = document.querySelector("button");
@@ -45,6 +77,5 @@
       }
       isLogin = !isLogin;
     }
-  </script>
-</body>
+  </script></body>
 </html>
