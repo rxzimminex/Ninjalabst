@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - NinjaLabs</title>
+  <style>
+    body { background:#111; color:white; font-family:sans-serif; padding:40px; }
+    .container { max-width:400px; margin:0 auto; background:#222; padding:30px; border-radius:10px; }
+    input, button { width:100%; padding:10px; margin:10px 0; border:none; border-radius:5px; }
+    input { background:#333; color:white; }
+    button { background:#e60000; color:white; font-weight:bold; }
+    .toggle { text-align:center; cursor:pointer; color:#ccc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="title">Login</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="senha" placeholder="Senha" required />
+    <input type="text" id="nome" placeholder="Nome" style="display:none;" />
+    <button onclick="submitForm()">Entrar</button>
+    <p class="toggle" onclick="alternar()">Não tem conta? Cadastre-se</p>
+    <p id="msg" style="color:red;text-align:center;"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
