@@ -1,28 +1,36 @@
-// script.js
+// script.js organizado para login e cadastro com Firebase
 
-// FunÃ§Ã£o de login
+// Exibe mensagens de erro na interface
+function mostrarErro(msg) {
+  const msgEl = document.getElementById("msg");
+  if (msgEl) msgEl.innerText = "Erro: " + msg;
+}
+
+// Redireciona após login/cadastro
+function redirecionarParaPainel() {
+  window.location.href = "index.html";
+}
+
+// Login de usuário existente
 function login() {
   const email = document.getElementById("email").value;
   const senha = document.getElementById("senha").value;
 
+  if (!email || !senha) return mostrarErro("Preencha todos os campos.");
+
   firebase.auth().signInWithEmailAndPassword(email, senha)
-    .then(() => {
-      window.location.href = "index.html"; // Redireciona apÃ³s login
-    })
-    .catch(error => {
-      document.getElementById("msg").innerText = "Erro: " + error.message;
-    });
+    .then(redirecionarParaPainel)
+    .catch(error => mostrarErro(error.message));
 }
 
-// FunÃ§Ã£o de cadastro
+// Cadastro de novo usuário
 function cadastrar() {
   const email = document.getElementById("email").value;
   const senha = document.getElementById("senha").value;
 
+  if (!email || !senha) return mostrarErro("Preencha todos os campos.");
+
   firebase.auth().createUserWithEmailAndPassword(email, senha)
-    .then(() => {
-      window.location.href = "index.html"; // Redireciona apÃ³s cadastro
-    })
-    .catch(error => {
-      document.getElementById("msg").innerText = "Erro: " + error.message;
-    });
+    .then(redirecionarParaPainel)
+    .catch(error => mostrarErro(error.message));
+}
